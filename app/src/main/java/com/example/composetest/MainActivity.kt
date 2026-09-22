@@ -43,6 +43,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.example.composetest.screen.Hal1Screen
+import com.example.composetest.screen.Hal2Screen
+import androidx.navigation.compose.rememberNavController
 import com.example.composetest.ui.theme.ComposeTestTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,7 +55,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            GreetingPreview()
+            // GreetingPreview()
+
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = NavDestination.Hal1)
+            {
+                composable(NavDestination.Hal1) {
+                    Hal1Screen(onNavigateToHal2 = { navController.navigate(NavDestination.Hal2) })
+                }
+                composable(NavDestination.Hal2) {
+                    Hal2Screen(onNavigateToHal1 = { navController.navigate(NavDestination.Hal1) })
+                }
+            }
         }
     }
 }
