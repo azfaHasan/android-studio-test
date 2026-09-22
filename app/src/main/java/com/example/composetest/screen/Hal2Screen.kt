@@ -36,6 +36,15 @@ fun Hal2Screen(onNavigateToHal1: () -> Unit) {
             .fillMaxSize()
             .padding(50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
+    ) {
+        myProfileScreen2("Muhammad Alif Azfa Hasani", "245150407111004")
+    }
+    Column (
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(50.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(text = "Screen 2")
